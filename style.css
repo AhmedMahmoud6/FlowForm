@@ -1,0 +1,12 @@
+.active,
+.completed {
+  color: white;
+}
+
+.active {
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+}
+
+.completed {
+  background-color: #4caf50;
+}

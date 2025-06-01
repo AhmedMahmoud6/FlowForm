@@ -8,7 +8,64 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
-  <body class="bg-gradient-to-r from-[#667eea] to-[#764ba2] h-screen"></body>
+  <body
+    class="bg-gradient-to-r from-[#667eea] to-[#764ba2] h-screen flex items-center"
+  >
+    <div
+      class="container h-230 w-200 bg-white mx-auto rounded-xl shadow-xl p-12"
+    >
+      <div class="steps relative flex justify-between">
+        <div
+          class="progress-cont absolute bg-[#e0e0e0] w-11/12 left-8 top-6 h-1"
+        >
+          <div
+            class="progress bg-gradient-to-r from-[#667eea] to-[#764ba2] h-1 transition-all duration-500 ease"
+            style="width: 0%"
+          ></div>
+        </div>
+
+        <div class="personal-info flex flex-col items-center gap-2 z-1">
+          <div
+            class="step-1 active bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
+          >
+            1
+          </div>
+          <p class="text-xs text-[#666]">Personal Info</p>
+        </div>
+
+        <div class="contact-details flex flex-col items-center gap-2 z-1">
+          <div
+            class="step-2 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
+          >
+            2
+          </div>
+          <p class="text-xs text-[#666]">Contact Details</p>
+        </div>
+
+        <div class="preferences flex flex-col items-center gap-2 z-1">
+          <div
+            class="step-3 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
+          >
+            3
+          </div>
+          <p class="text-xs text-[#666]">Preferences</p>
+        </div>
+
+        <div class="summary flex flex-col items-center gap-2 z-1">
+          <div
+            class="step-4 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
+          >
+            4
+          </div>
+          <p class="text-xs text-[#666]">Summary</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
 </html>

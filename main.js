@@ -19,13 +19,24 @@ let birthDate = document.querySelector(".birth");
 let birthDateInput = document.querySelector(".birth input");
 
 let genderInput = document.querySelector("#gender");
+let nationalityInput = document.querySelector(".nationality input");
 
-firstNameInput.value = getFirstName();
-lastNameInput.value = getLastName();
-birthDateInput.value = getDate();
+// update first page details
+updateFirstPage(
+  firstNameInput,
+  lastNameInput,
+  birthDateInput,
+  genderInput,
+  nationalityInput
+);
 
+// render current step circle
 renderCurrentStep(steps);
+
+// render current step content
 renderCurrentStepContent(stepsContent, prevBtn, nextBtn);
+
+// render current step progress bar
 currentProgressBar(stepCounter, progressBar);
 
 nextBtn.addEventListener("click", (_) => {
@@ -64,4 +75,12 @@ lastNameInput.addEventListener("input", (_) => {
 birthDateInput.addEventListener("change", (_) => {
   setDate(birthDateInput.value.trim());
   validateDate(birthDate, birthDateInput);
+});
+
+genderInput.addEventListener("change", (_) => {
+  sessionStorage.setItem("gender", JSON.stringify(genderInput.value));
+});
+
+nationalityInput.addEventListener("input", (_) => {
+  sessionStorage.setItem("nationality", JSON.stringify(nationalityInput.value));
 });

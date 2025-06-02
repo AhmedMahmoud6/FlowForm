@@ -74,6 +74,21 @@ function getDate() {
   return JSON.parse(sessionStorage.getItem("date"));
 }
 
+function setGender(value) {
+  sessionStorage.setItem("gender", JSON.stringify(value));
+}
+
+function getGender() {
+  return JSON.parse(sessionStorage.getItem("gender"));
+}
+function setNationality(value) {
+  sessionStorage.setItem("nationality", JSON.stringify(value));
+}
+
+function getNationality() {
+  return JSON.parse(sessionStorage.getItem("nationality"));
+}
+
 function validateFirstName(firstName) {
   // if first Name is a number or char
   if (!isAlpha(getFirstName())) {
@@ -129,4 +144,18 @@ function validateFirstPage(firstName, lastName, birthDate, birthDateInput) {
     return true;
   }
   return false;
+}
+
+function updateFirstPage(
+  firstNameInput,
+  lastNameInput,
+  birthDateInput,
+  genderInput,
+  nationalityInput
+) {
+  firstNameInput.value = getFirstName();
+  lastNameInput.value = getLastName();
+  birthDateInput.value = getDate();
+  genderInput.value = getGender() || "";
+  nationalityInput.value = getNationality();
 }

@@ -1,6 +1,22 @@
+import {
+  getAddress,
+  getAlternatePhone,
+  getCity,
+  getCounrty,
+  getDate,
+  getEmail,
+  getFirstName,
+  getGender,
+  getLastName,
+  getNationality,
+  getPhone,
+  getStepCounter,
+  getZip,
+} from "./getAndSetFunctions.js";
+
 let stepProgressWidth = 0;
 
-function renderCurrentStepContent(stepsContent, prevBtn, nextBtn) {
+export function renderCurrentStepContent(stepsContent, prevBtn, nextBtn) {
   // add hidden to all steps
   for (let currStep of stepsContent) {
     currStep.classList.add("hidden");
@@ -8,16 +24,16 @@ function renderCurrentStepContent(stepsContent, prevBtn, nextBtn) {
 
   // remove hidden from the current step
   for (let currStep of stepsContent) {
-    if (currStep.classList.contains(`step-${stepCounter}-content`)) {
+    if (currStep.classList.contains(`step-${getStepCounter()}-content`)) {
       currStep.classList.remove("hidden");
     }
   }
 
-  prevBtn.classList.toggle("hidden", stepCounter === 1);
-  nextBtn.classList.toggle("hidden", stepCounter === 4);
+  prevBtn.classList.toggle("hidden", getStepCounter() === 1);
+  nextBtn.classList.toggle("hidden", getStepCounter() === 4);
 }
 
-function renderCurrentStep(steps) {
+export function renderCurrentStep(steps) {
   // remove active or completed from all steps
   for (let currStep of steps) {
     currStep.classList.remove("active");
@@ -26,7 +42,7 @@ function renderCurrentStep(steps) {
 
   // adding active or completed
   for (let currStep of steps) {
-    if (currStep.classList.contains(`step-${stepCounter}`)) {
+    if (currStep.classList.contains(`step-${getStepCounter()}`)) {
       currStep.classList.add("active");
       break;
     } else {
@@ -35,13 +51,13 @@ function renderCurrentStep(steps) {
   }
 }
 
-function updateProgressBar(progressBar, move = "right") {
+export function updateProgressBar(progressBar, move = "right") {
   if (move === "right") stepProgressWidth += 33;
   else if (move === "left") stepProgressWidth -= 33;
   progressBar.style = `width: ${stepProgressWidth}%`;
 }
 
-function currentProgressBar(stepCounter, progressBar) {
+export function currentProgressBar(stepCounter, progressBar) {
   stepProgressWidth = 33 * (stepCounter - 1);
   progressBar.style = `width: ${stepProgressWidth}%`;
 }
@@ -50,111 +66,7 @@ function isAlpha(str) {
   return /^[a-zA-Z]+[0-9]*[a-zA-Z]*$/.test(str);
 }
 
-function setFirstName(value) {
-  sessionStorage.setItem("firstname", JSON.stringify(value));
-}
-
-function getFirstName() {
-  return JSON.parse(sessionStorage.getItem("firstname"));
-}
-
-function setStepCounter(value) {
-  sessionStorage.setItem("stepCounter", JSON.stringify(value));
-}
-
-function getStepCounter() {
-  return JSON.parse(sessionStorage.getItem("stepCounter"));
-}
-
-function setLastName(value) {
-  sessionStorage.setItem("lastname", JSON.stringify(value));
-}
-
-function getLastName() {
-  return JSON.parse(sessionStorage.getItem("lastname"));
-}
-
-function setDate(value) {
-  sessionStorage.setItem("date", JSON.stringify(value));
-}
-
-function getDate() {
-  return JSON.parse(sessionStorage.getItem("date"));
-}
-
-function setGender(value) {
-  sessionStorage.setItem("gender", JSON.stringify(value));
-}
-
-function getGender() {
-  return JSON.parse(sessionStorage.getItem("gender"));
-}
-
-function setNationality(value) {
-  sessionStorage.setItem("nationality", JSON.stringify(value));
-}
-
-function getNationality() {
-  return JSON.parse(sessionStorage.getItem("nationality"));
-}
-
-function setEmail(value) {
-  sessionStorage.setItem("email", JSON.stringify(value));
-}
-
-function getEmail() {
-  return JSON.parse(sessionStorage.getItem("email"));
-}
-
-function setPhone(value) {
-  sessionStorage.setItem("phone", JSON.stringify(value));
-}
-
-function getPhone() {
-  return JSON.parse(sessionStorage.getItem("phone"));
-}
-
-function setAlternatePhone(value) {
-  sessionStorage.setItem("alternatephone", JSON.stringify(value));
-}
-
-function getAlternatePhone() {
-  return JSON.parse(sessionStorage.getItem("alternatephone"));
-}
-
-function setAddress(value) {
-  sessionStorage.setItem("address", JSON.stringify(value));
-}
-
-function getAddress() {
-  return JSON.parse(sessionStorage.getItem("address"));
-}
-
-function setCity(value) {
-  sessionStorage.setItem("city", JSON.stringify(value));
-}
-
-function getCity() {
-  return JSON.parse(sessionStorage.getItem("city"));
-}
-
-function setZip(value) {
-  sessionStorage.setItem("zip", JSON.stringify(value));
-}
-
-function getZip() {
-  return JSON.parse(sessionStorage.getItem("zip"));
-}
-
-function setCountry(value) {
-  sessionStorage.setItem("country", JSON.stringify(value));
-}
-
-function getCounrty() {
-  return JSON.parse(sessionStorage.getItem("country"));
-}
-
-function validateFirstName(firstName) {
+export function validateFirstName(firstName) {
   // if first Name is a number or char
   if (!isAlpha(getFirstName())) {
     if (getFirstName() !== "")
@@ -168,7 +80,7 @@ function validateFirstName(firstName) {
   }
 }
 
-function validateLastName(lastName) {
+export function validateLastName(lastName) {
   // if last Name is a number or char
   if (!isAlpha(getLastName())) {
     if (getLastName() !== "")
@@ -187,7 +99,7 @@ function isValidDate(value) {
   return value !== "" && !isNaN(date.getTime());
 }
 
-function validateDate(birthDate, birthDateInput) {
+export function validateDate(birthDate, birthDateInput) {
   if (!isValidDate(birthDateInput.value)) {
     if (birthDateInput.value !== "")
       birthDate.querySelector("p").textContent = "write a valid date";
@@ -200,7 +112,12 @@ function validateDate(birthDate, birthDateInput) {
   }
 }
 
-function validateFirstPage(firstName, lastName, birthDate, birthDateInput) {
+export function validateFirstPage(
+  firstName,
+  lastName,
+  birthDate,
+  birthDateInput
+) {
   if (
     validateFirstName(firstName) &&
     validateLastName(lastName) &&
@@ -211,7 +128,7 @@ function validateFirstPage(firstName, lastName, birthDate, birthDateInput) {
   return false;
 }
 
-function updateFirstPage(
+export function updateFirstPage(
   firstNameInput,
   lastNameInput,
   birthDateInput,
@@ -229,7 +146,7 @@ function isValidEmail(email) {
   return /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(email);
 }
 
-function validateEmail(emailAddress) {
+export function validateEmail(emailAddress) {
   // if not valid Email
   if (!isValidEmail(getEmail())) {
     if (getEmail() !== "")
@@ -248,7 +165,7 @@ function isValidPhoneNumber(phone) {
   return /^\+?[0-9]{7,15}$/.test(cleaned);
 }
 
-function validatePhoneNumber(phoneNumber) {
+export function validatePhoneNumber(phoneNumber) {
   // if not valid phone number
   if (!isValidPhoneNumber(getPhone())) {
     if (getPhone() !== "")
@@ -262,7 +179,7 @@ function validatePhoneNumber(phoneNumber) {
   }
 }
 
-function validateAlternatePhoneNumber(alternateNumber) {
+export function validateAlternatePhoneNumber(alternateNumber) {
   // if valid alternate phone number or empty
   if (getAlternatePhone() === "" || isValidPhoneNumber(getAlternatePhone())) {
     alternateNumber.querySelector("p").classList.add("hidden");
@@ -279,7 +196,7 @@ function isValidStreetAddress(address) {
   return /^[a-zA-Z0-9\s.,#\-\/]{5,100}$/.test(address.trim());
 }
 
-function validateStreetAddress(streetAddress) {
+export function validateStreetAddress(streetAddress) {
   // if not valid address
   if (!isValidStreetAddress(getAddress())) {
     if (getAddress() !== "")
@@ -297,7 +214,7 @@ function isValidCity(city) {
   return /^[a-zA-Z\u00C0-\u024F'’\- ]{2,50}$/.test(city.trim());
 }
 
-function validateCity(city) {
+export function validateCity(city) {
   // if not valid city
   if (!isValidCity(getCity())) {
     if (getCity() !== "")
@@ -315,7 +232,7 @@ function isValidZip(zip) {
   return /^\d{4,10}$/.test(zip);
 }
 
-function validateZip(zip) {
+export function validateZip(zip) {
   // if not valid zip
   if (!isValidZip(getZip())) {
     if (getZip() !== "")
@@ -329,7 +246,7 @@ function validateZip(zip) {
   }
 }
 
-function validateCountry(country) {
+export function validateCountry(country) {
   if (!getCounrty()) {
     country.querySelector("p").classList.remove("hidden");
     return false;
@@ -339,7 +256,7 @@ function validateCountry(country) {
   }
 }
 
-function validateSecondPage(
+export function validateSecondPage(
   emailAddress,
   phoneNumber,
   alternateNumber,
@@ -362,7 +279,7 @@ function validateSecondPage(
   return false;
 }
 
-function updateSecondPage(
+export function updateSecondPage(
   emailAddressInput,
   phoneNumberInput,
   alternateNumberInput,

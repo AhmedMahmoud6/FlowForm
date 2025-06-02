@@ -1,3 +1,41 @@
+import {
+  getStepCounter,
+  setAddress,
+  setAlternatePhone,
+  setCity,
+  setCountry,
+  setDate,
+  setEmail,
+  setFirstName,
+  setGender,
+  setLastName,
+  setNationality,
+  setPhone,
+  setStepCounter,
+  setZip,
+} from "./getAndSetFunctions.js";
+
+import {
+  currentProgressBar,
+  renderCurrentStep,
+  renderCurrentStepContent,
+  updateFirstPage,
+  updateProgressBar,
+  updateSecondPage,
+  validateAlternatePhoneNumber,
+  validateCity,
+  validateCountry,
+  validateDate,
+  validateEmail,
+  validateFirstName,
+  validateFirstPage,
+  validateLastName,
+  validatePhoneNumber,
+  validateSecondPage,
+  validateStreetAddress,
+  validateZip,
+} from "./functions.js";
+
 let progressBar = document.querySelector(".progress");
 
 let stepCounter = getStepCounter() || 1;

@@ -13,10 +13,10 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
   <body
-    class="bg-gradient-to-r from-[#667eea] to-[#764ba2] h-screen flex items-center"
+    class="bg-gradient-to-r from-[#667eea] to-[#764ba2] flex items-center p-6"
   >
     <div
-      class="container h-230 w-200 bg-white mx-auto rounded-xl shadow-xl p-12 relative flex flex-col"
+      class="container h-fit w-200 bg-white m-auto rounded-xl shadow-xl p-12 relative flex flex-col px-6"
     >
       <div class="flex flex-col flex-grow gap-6">
         <div class="steps relative flex justify-between mb-10">
@@ -223,7 +223,7 @@
           </div>
         </div>
 
-        <div class="step-3-content flex flex-col gap-5">
+        <div class="step-3-content flex flex-col gap-7 hidden">
           <h1 class="text-2xl font-bold">Preferences & Additional Info</h1>
           <label class="text-[#333333]"
             >Interests (Select all that apply)</label
@@ -341,10 +341,10 @@
                   Select Experience
                 </option>
 
-                <option value="0-1 years">0-1 years</option>
-                <option value="2-5 years">2-5 years</option>
-                <option value="6-10 years">6-10 years</option>
-                <option value="11+ years">11+ years</option>
+                <option value="0-1">0-1 years</option>
+                <option value="2-5">2-5 years</option>
+                <option value="6-10">6-10 years</option>
+                <option value="11+">11+ years</option>
               </select>
             </div>
             <div class="preferred flex flex-col gap-2 sm:w-1/2 w-full relative">
@@ -362,7 +362,7 @@
             </div>
           </div>
 
-          <div class="comments flex flex-col gap-2 w-full">
+          <div class="comments flex flex-col gap-4 w-full">
             <label for="comment">Additional Comments</label>
             <input
               class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-18 p-3 rounded-xl transition-all duration-300"
@@ -403,10 +403,142 @@
             </p>
           </div>
         </div>
+
+        <div class="step-4-content flex flex-col items-center gap-2">
+          <h1 class="text-2xl font-bold mb-4">Form Summary</h1>
+          <div
+            class="summary-card bg-[#f8f9ff] w-full border-l-5 border-[#667eea] p-4 rounded-xl mb-8"
+          >
+            <div class="summary-section mb-5">
+              <h3 class="border-b-2 border-[#667eea] mb-4 font-bold pb-2">
+                Personal Information
+              </h3>
+              <div id="personalSummary">
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Full Name:</span>
+                  <span class="summary-value">Ahmed Mahmoud</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Date of Birth:</span>
+                  <span class="summary-value">2025-06-17</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Gender:</span>
+                  <span class="summary-value">Not specified</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Nationality:</span>
+                  <span class="summary-value">Not provided</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="summary-section mb-5">
+              <h3 class="border-b-2 border-[#667eea] mb-4 font-bold pb-2">
+                Contact Details
+              </h3>
+              <div id="contactSummary">
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Email:</span>
+                  <span class="summary-value">aywa400@gmail.com</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Phone:</span>
+                  <span class="summary-value">01068322147</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Alternate Phone:</span>
+                  <span class="summary-value">Not provided</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Address:</span>
+                  <span class="summary-value">gh</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">City:</span>
+                  <span class="summary-value">Cairo</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">ZIP Code:</span>
+                  <span class="summary-value">1421245</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Country:</span>
+                  <span class="summary-value">uk</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="summary-section mb-5">
+              <h3 class="border-b-2 border-[#667eea] mb-4 font-bold pb-2">
+                Preferences &amp; Additional Info
+              </h3>
+              <div id="preferencesSummary">
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Interests:</span>
+                  <span class="summary-value">None selected</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Experience:</span>
+                  <span class="summary-value">11+</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Preferred Contact:</span>
+                  <span class="summary-value">email</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Newsletter:</span>
+                  <span class="summary-value">Yes</span>
+                </div>
+                <div
+                  class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
+                >
+                  <span class="summary-label">Comments:</span>
+                  <span class="summary-value">None provided</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="print-summary p-3 px-10 bg-[#46a24a] rounded-3xl text-white font-bold cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out"
+          >
+            PRINT SUMMARY
+          </button>
+        </div>
       </div>
 
       <div
-        class="buttons pt-4 border-t-1 border-[#e0e0e0] bottom-12 flex justify-between w-full"
+        class="buttons pt-4 mt-20 border-t-1 border-[#e0e0e0] bottom-12 flex justify-between w-full"
       >
         <button
           class="prev hidden p-2 px-6 bg-[#f0f0f0] rounded-3xl text-[#666665] font-bold cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out"

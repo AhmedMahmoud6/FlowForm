@@ -16,53 +16,130 @@
     class="bg-gradient-to-r from-[#667eea] to-[#764ba2] h-screen flex items-center"
   >
     <div
-      class="container h-230 w-200 bg-white mx-auto rounded-xl shadow-xl p-12"
+      class="container h-230 w-200 bg-white mx-auto rounded-xl shadow-xl p-12 relative flex flex-col"
     >
-      <div class="steps relative flex justify-between">
-        <div
-          class="progress-cont absolute bg-[#e0e0e0] w-11/12 left-8 top-6 h-1"
+      <div class="flex flex-col flex-grow gap-6">
+        <div class="steps relative flex justify-between mb-10">
+          <div
+            class="progress-cont absolute bg-[#e0e0e0] w-11/12 left-8 top-6 h-1"
+          >
+            <div
+              class="progress bg-gradient-to-r from-[#667eea] to-[#764ba2] h-1 transition-all duration-500 ease"
+              style="width: 0%"
+            ></div>
+          </div>
+
+          <div class="personal-info flex flex-col items-center gap-2 z-1">
+            <div
+              class="step-1 active bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+            >
+              1
+            </div>
+            <p class="text-xs text-[#666]">Personal Info</p>
+          </div>
+
+          <div class="contact-details flex flex-col items-center gap-2 z-1">
+            <div
+              class="step-2 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+            >
+              2
+            </div>
+            <p class="text-xs text-[#666]">Contact Details</p>
+          </div>
+
+          <div class="preferences flex flex-col items-center gap-2 z-1">
+            <div
+              class="step-3 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+            >
+              3
+            </div>
+            <p class="text-xs text-[#666]">Preferences</p>
+          </div>
+
+          <div class="summary flex flex-col items-center gap-2 z-1">
+            <div
+              class="step-4 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+            >
+              4
+            </div>
+            <p class="text-xs text-[#666]">Summary</p>
+          </div>
+        </div>
+
+        <div class="step-1-content flex flex-col gap-6">
+          <h1 class="text-2xl font-bold">Personal Information</h1>
+          <div class="name flex sm:flex-row flex-col justify-between gap-6">
+            <div class="first-name flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="first">First Name *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="first"
+              />
+            </div>
+
+            <div class="last-name flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="last">Last Name *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="last"
+              />
+            </div>
+          </div>
+          <div class="date flex sm:flex-row flex-col justify-between gap-6">
+            <div class="birth flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="birth">Date of Birth *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="date"
+                id="birth"
+              />
+            </div>
+
+            <div class="gender flex flex-col gap-2 sm:w-1/2 w-full relative">
+              <label for="gender">Gender</label>
+              <select
+                id="gender"
+                name="gender"
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 px-3 rounded-xl transition-all duration-300 appearance-none"
+              >
+                <option value="" disabled hidden selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+
+              <div
+                class="pointer-events-none absolute inset-y-0 -bottom-7 right-3 flex items-center text-gray-600"
+              >
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="nationality flex flex-col gap-2 w-full">
+            <label for="nationality">Nationality</label>
+            <input
+              class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+              type="text"
+              id="nationality"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="buttons pt-4 border-t-1 border-[#e0e0e0] bottom-12 flex justify-between w-full"
+      >
+        <button
+          class="prev hidden p-2 px-6 bg-[#f0f0f0] rounded-3xl text-[#666665] font-bold cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out"
         >
-          <div
-            class="progress bg-gradient-to-r from-[#667eea] to-[#764ba2] h-1 transition-all duration-500 ease"
-            style="width: 0%"
-          ></div>
-        </div>
-
-        <div class="personal-info flex flex-col items-center gap-2 z-1">
-          <div
-            class="step-1 active bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
-          >
-            1
-          </div>
-          <p class="text-xs text-[#666]">Personal Info</p>
-        </div>
-
-        <div class="contact-details flex flex-col items-center gap-2 z-1">
-          <div
-            class="step-2 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
-          >
-            2
-          </div>
-          <p class="text-xs text-[#666]">Contact Details</p>
-        </div>
-
-        <div class="preferences flex flex-col items-center gap-2 z-1">
-          <div
-            class="step-3 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
-          >
-            3
-          </div>
-          <p class="text-xs text-[#666]">Preferences</p>
-        </div>
-
-        <div class="summary flex flex-col items-center gap-2 z-1">
-          <div
-            class="step-4 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center"
-          >
-            4
-          </div>
-          <p class="text-xs text-[#666]">Summary</p>
-        </div>
+          PREVIOUS
+        </button>
+        <button
+          class="next p-2 px-6 bg-gradient-to-r from-[#667eea] to-[#764ba2] rounded-3xl text-white font-bold cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out"
+        >
+          NEXT
+        </button>
       </div>
     </div>
 

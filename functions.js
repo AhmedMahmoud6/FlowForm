@@ -45,3 +45,88 @@ function currentProgressBar(stepCounter, progressBar) {
   stepProgressWidth = 33 * (stepCounter - 1);
   progressBar.style = `width: ${stepProgressWidth}%`;
 }
+
+function isAlpha(str) {
+  return /^[a-zA-Z]+[0-9]*[a-zA-Z]*$/.test(str);
+}
+
+function setFirstName(value) {
+  sessionStorage.setItem("firstname", JSON.stringify(value));
+}
+
+function getFirstName() {
+  return JSON.parse(sessionStorage.getItem("firstname"));
+}
+
+function setLastName(value) {
+  sessionStorage.setItem("lastname", JSON.stringify(value));
+}
+
+function getLastName() {
+  return JSON.parse(sessionStorage.getItem("lastname"));
+}
+
+function setDate(value) {
+  sessionStorage.setItem("date", JSON.stringify(value));
+}
+
+function getDate() {
+  return JSON.parse(sessionStorage.getItem("date"));
+}
+
+function validateFirstName(firstName) {
+  // if first Name is a number or char
+  if (!isAlpha(getFirstName())) {
+    if (getFirstName() !== "")
+      firstName.querySelector("p").textContent = "Name can't be numbers";
+    firstName.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    firstName.querySelector("p").classList.add("hidden");
+    firstName.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function validateLastName(lastName) {
+  // if last Name is a number or char
+  if (!isAlpha(getLastName())) {
+    if (getLastName() !== "")
+      lastName.querySelector("p").textContent = "Name can't be numbers";
+    lastName.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    lastName.querySelector("p").classList.add("hidden");
+    lastName.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function isValidDate(value) {
+  const date = new Date(value);
+  return value !== "" && !isNaN(date.getTime());
+}
+
+function validateDate(birthDate, birthDateInput) {
+  if (!isValidDate(birthDateInput.value)) {
+    if (birthDateInput.value !== "")
+      birthDate.querySelector("p").textContent = "write a valid date";
+    birthDate.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    birthDate.querySelector("p").classList.add("hidden");
+    birthDate.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function validateFirstPage(firstName, lastName, birthDate, birthDateInput) {
+  if (
+    validateFirstName(firstName) &&
+    validateLastName(lastName) &&
+    validateDate(birthDate, birthDateInput)
+  ) {
+    return true;
+  }
+  return false;
+}

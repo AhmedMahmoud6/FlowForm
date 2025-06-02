@@ -3,7 +3,7 @@ export function setFirstName(value) {
 }
 
 export function getFirstName() {
-  return JSON.parse(sessionStorage.getItem("firstname"));
+  return JSON.parse(sessionStorage.getItem("firstname")) || "";
 }
 
 export function setStepCounter(value) {
@@ -11,7 +11,7 @@ export function setStepCounter(value) {
 }
 
 export function getStepCounter() {
-  return JSON.parse(sessionStorage.getItem("stepCounter"));
+  return JSON.parse(sessionStorage.getItem("stepCounter")) || 1;
 }
 
 export function setLastName(value) {
@@ -19,7 +19,7 @@ export function setLastName(value) {
 }
 
 export function getLastName() {
-  return JSON.parse(sessionStorage.getItem("lastname"));
+  return JSON.parse(sessionStorage.getItem("lastname")) || "";
 }
 
 export function setDate(value) {
@@ -27,7 +27,7 @@ export function setDate(value) {
 }
 
 export function getDate() {
-  return JSON.parse(sessionStorage.getItem("date"));
+  return JSON.parse(sessionStorage.getItem("date")) || "";
 }
 
 export function setGender(value) {
@@ -35,7 +35,7 @@ export function setGender(value) {
 }
 
 export function getGender() {
-  return JSON.parse(sessionStorage.getItem("gender"));
+  return JSON.parse(sessionStorage.getItem("gender")) || "";
 }
 
 export function setNationality(value) {
@@ -43,7 +43,7 @@ export function setNationality(value) {
 }
 
 export function getNationality() {
-  return JSON.parse(sessionStorage.getItem("nationality"));
+  return JSON.parse(sessionStorage.getItem("nationality")) || "";
 }
 
 export function setEmail(value) {
@@ -51,7 +51,7 @@ export function setEmail(value) {
 }
 
 export function getEmail() {
-  return JSON.parse(sessionStorage.getItem("email"));
+  return JSON.parse(sessionStorage.getItem("email")) || "";
 }
 
 export function setPhone(value) {
@@ -59,7 +59,7 @@ export function setPhone(value) {
 }
 
 export function getPhone() {
-  return JSON.parse(sessionStorage.getItem("phone"));
+  return JSON.parse(sessionStorage.getItem("phone")) || "";
 }
 
 export function setAlternatePhone(value) {
@@ -67,7 +67,7 @@ export function setAlternatePhone(value) {
 }
 
 export function getAlternatePhone() {
-  return JSON.parse(sessionStorage.getItem("alternatephone"));
+  return JSON.parse(sessionStorage.getItem("alternatephone")) || "";
 }
 
 export function setAddress(value) {
@@ -75,7 +75,7 @@ export function setAddress(value) {
 }
 
 export function getAddress() {
-  return JSON.parse(sessionStorage.getItem("address"));
+  return JSON.parse(sessionStorage.getItem("address")) || "";
 }
 
 export function setCity(value) {
@@ -83,7 +83,7 @@ export function setCity(value) {
 }
 
 export function getCity() {
-  return JSON.parse(sessionStorage.getItem("city"));
+  return JSON.parse(sessionStorage.getItem("city")) || "";
 }
 
 export function setZip(value) {
@@ -91,7 +91,7 @@ export function setZip(value) {
 }
 
 export function getZip() {
-  return JSON.parse(sessionStorage.getItem("zip"));
+  return JSON.parse(sessionStorage.getItem("zip")) || "";
 }
 
 export function setCountry(value) {
@@ -99,5 +99,5 @@ export function setCountry(value) {
 }
 
 export function getCounrty() {
-  return JSON.parse(sessionStorage.getItem("country"));
+  return JSON.parse(sessionStorage.getItem("country")) || "";
 }

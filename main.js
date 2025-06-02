@@ -38,7 +38,7 @@ import {
 
 let progressBar = document.querySelector(".progress");
 
-let stepCounter = getStepCounter() || 1;
+let stepCounter = getStepCounter();
 let nextBtn = document.querySelector(".next");
 let prevBtn = document.querySelector(".prev");
 
@@ -110,22 +110,26 @@ currentProgressBar(stepCounter, progressBar);
 nextBtn.addEventListener("click", (_) => {
   if (stepCounter !== 4) {
     // validate first page
-    if (!validateFirstPage(firstName, lastName, birthDate, birthDateInput))
-      return;
+    if (stepCounter === 1) {
+      if (!validateFirstPage(firstName, lastName, birthDate, birthDateInput))
+        return;
+    }
 
     // validate second page
-    if (
-      !validateSecondPage(
-        emailAddress,
-        phoneNumber,
-        alternateNumber,
-        streetAddress,
-        city,
-        zip,
-        country
+    else if (stepCounter === 2) {
+      if (
+        !validateSecondPage(
+          emailAddress,
+          phoneNumber,
+          alternateNumber,
+          streetAddress,
+          city,
+          zip,
+          country
+        )
       )
-    )
-      return;
+        return;
+    }
 
     stepCounter += 1;
     setStepCounter(stepCounter);
@@ -157,7 +161,7 @@ lastNameInput.addEventListener("input", (_) => {
 
 birthDateInput.addEventListener("change", (_) => {
   setDate(birthDateInput.value.trim());
-  validateDate(birthDate, birthDateInput);
+  validateDate(birthDate);
 });
 
 genderInput.addEventListener("change", (_) => {
@@ -165,7 +169,7 @@ genderInput.addEventListener("change", (_) => {
 });
 
 nationalityInput.addEventListener("input", (_) => {
-  setNationality();
+  setNationality(nationalityInput.value);
 });
 
 emailAddressInput.addEventListener("input", (_) => {

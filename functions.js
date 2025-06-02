@@ -24,7 +24,7 @@ export function renderCurrentStepContent(stepsContent, prevBtn, nextBtn) {
 
   // remove hidden from the current step
   for (let currStep of stepsContent) {
-    if (currStep.classList.contains(`step-${getStepCounter()}-content`)) {
+    if (currStep.classList.contains(`step-${getStepCounter() || 1}-content`)) {
       currStep.classList.remove("hidden");
     }
   }
@@ -42,7 +42,7 @@ export function renderCurrentStep(steps) {
 
   // adding active or completed
   for (let currStep of steps) {
-    if (currStep.classList.contains(`step-${getStepCounter()}`)) {
+    if (currStep.classList.contains(`step-${getStepCounter() || 1}`)) {
       currStep.classList.add("active");
       break;
     } else {
@@ -99,9 +99,9 @@ function isValidDate(value) {
   return value !== "" && !isNaN(date.getTime());
 }
 
-export function validateDate(birthDate, birthDateInput) {
-  if (!isValidDate(birthDateInput.value)) {
-    if (birthDateInput.value !== "")
+export function validateDate(birthDate) {
+  if (!isValidDate(getDate())) {
+    if (getDate() !== "")
       birthDate.querySelector("p").textContent = "write a valid date";
     birthDate.querySelector("p").classList.remove("hidden");
     return false;

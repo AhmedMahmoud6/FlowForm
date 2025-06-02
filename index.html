@@ -31,7 +31,7 @@
 
           <div class="personal-info flex flex-col items-center gap-2 z-1">
             <div
-              class="step-1 active bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+              class="step-progress step-1 active bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
             >
               1
             </div>
@@ -40,7 +40,7 @@
 
           <div class="contact-details flex flex-col items-center gap-2 z-1">
             <div
-              class="step-2 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+              class="step-progress step-2 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
             >
               2
             </div>
@@ -49,7 +49,7 @@
 
           <div class="preferences flex flex-col items-center gap-2 z-1">
             <div
-              class="step-3 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+              class="step-progress step-3 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
             >
               3
             </div>
@@ -58,7 +58,7 @@
 
           <div class="summary flex flex-col items-center gap-2 z-1">
             <div
-              class="step-4 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
+              class="step-progress step-4 bg-[#e0e0e0] text-[#666] font-bold rounded-full w-12 h-12 flex justify-center items-center transition-all duration-500 ease"
             >
               4
             </div>
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="step-1-content flex flex-col gap-6 hidden">
+        <div class="content step-1-content flex flex-col gap-6 hidden">
           <h1 class="text-2xl font-bold">Personal Information</h1>
           <div class="name flex sm:flex-row flex-col justify-between gap-6">
             <div class="first-name flex flex-col gap-2 sm:w-1/2 w-full">
@@ -129,7 +129,7 @@
           </div>
         </div>
 
-        <div class="step-2-content flex flex-col gap-6 hidden">
+        <div class="content step-2-content flex flex-col gap-6 hidden">
           <h1 class="text-2xl font-bold">Contact Details</h1>
           <div
             class="email-container flex sm:flex-row flex-col justify-between gap-6"
@@ -223,7 +223,7 @@
           </div>
         </div>
 
-        <div class="step-3-content flex flex-col gap-7 hidden">
+        <div class="content step-3-content flex flex-col gap-7 hidden">
           <h1 class="text-2xl font-bold">Preferences & Additional Info</h1>
           <label class="text-[#333333]"
             >Interests (Select all that apply)</label
@@ -404,7 +404,9 @@
           </div>
         </div>
 
-        <div class="step-4-content flex flex-col items-center gap-2">
+        <div
+          class="content step-4-content flex flex-col items-center gap-2 hidden"
+        >
           <h1 class="text-2xl font-bold mb-4">Form Summary</h1>
           <div
             class="summary-card bg-[#f8f9ff] w-full border-l-5 border-[#667eea] p-4 rounded-xl mb-8"
@@ -553,6 +555,7 @@
       </div>
     </div>
 
+    <script src="functions.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

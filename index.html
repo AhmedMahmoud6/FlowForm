@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="step-1-content flex flex-col gap-6">
+        <div class="step-1-content flex flex-col gap-6 hidden">
           <h1 class="text-2xl font-bold">Personal Information</h1>
           <div class="name flex sm:flex-row flex-col justify-between gap-6">
             <div class="first-name flex flex-col gap-2 sm:w-1/2 w-full">
@@ -76,6 +76,7 @@
                 type="text"
                 id="first"
               />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
             </div>
 
             <div class="last-name flex flex-col gap-2 sm:w-1/2 w-full">
@@ -85,6 +86,7 @@
                 type="text"
                 id="last"
               />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
             </div>
           </div>
           <div class="date flex sm:flex-row flex-col justify-between gap-6">
@@ -95,6 +97,7 @@
                 type="date"
                 id="birth"
               />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
             </div>
 
             <div class="gender flex flex-col gap-2 sm:w-1/2 w-full relative">
@@ -123,6 +126,100 @@
               type="text"
               id="nationality"
             />
+          </div>
+        </div>
+
+        <div class="step-2-content flex flex-col gap-6">
+          <h1 class="text-2xl font-bold">Contact Details</h1>
+          <div
+            class="email-container flex sm:flex-row flex-col justify-between gap-6"
+          >
+            <div class="email flex flex-col gap-2 w-full">
+              <label for="email">Email Address *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="email"
+              />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
+            </div>
+          </div>
+
+          <div
+            class="phone-container flex sm:flex-row flex-col justify-between gap-6"
+          >
+            <div class="phone-number flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="phone">Phone Number *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="phone"
+              />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
+            </div>
+            <div class="alternate-number flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="alternate">Alternate Phone</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="alternate"
+              />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
+            </div>
+          </div>
+
+          <div
+            class="address-container flex sm:flex-row flex-col justify-between gap-6"
+          >
+            <div class="address flex flex-col gap-2 w-full">
+              <label for="address">Street Address *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-14 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="address"
+              />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
+            </div>
+          </div>
+
+          <div
+            class="city-container flex sm:flex-row flex-col justify-between gap-6"
+          >
+            <div class="city flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="city">City *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="city"
+              />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
+            </div>
+            <div class="zip-code flex flex-col gap-2 sm:w-1/2 w-full">
+              <label for="zip">ZIP Code *</label>
+              <input
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 p-3 rounded-xl transition-all duration-300"
+                type="text"
+                id="zip"
+              />
+              <p class="text-red-500 text-xs hidden">This field is required</p>
+            </div>
+          </div>
+
+          <div class="country flex flex-col gap-2 w-full">
+            <label for="country">Country *</label>
+            <select
+              id="country"
+              name="country"
+              class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 px-3 rounded-xl transition-all duration-300"
+            >
+              <option value="" disabled hidden selected>Select Country</option>
+              <option value="egypt">Egypt</option>
+              <option value="united states">United States</option>
+              <option value="germany">Germany</option>
+              <option value="other">Other</option>
+            </select>
+
+            <p class="text-red-500 text-xs hidden">This field is required</p>
           </div>
         </div>
       </div>

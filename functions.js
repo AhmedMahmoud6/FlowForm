@@ -58,6 +58,14 @@ function getFirstName() {
   return JSON.parse(sessionStorage.getItem("firstname"));
 }
 
+function setStepCounter(value) {
+  sessionStorage.setItem("stepCounter", JSON.stringify(value));
+}
+
+function getStepCounter() {
+  return JSON.parse(sessionStorage.getItem("stepCounter"));
+}
+
 function setLastName(value) {
   sessionStorage.setItem("lastname", JSON.stringify(value));
 }
@@ -81,12 +89,69 @@ function setGender(value) {
 function getGender() {
   return JSON.parse(sessionStorage.getItem("gender"));
 }
+
 function setNationality(value) {
   sessionStorage.setItem("nationality", JSON.stringify(value));
 }
 
 function getNationality() {
   return JSON.parse(sessionStorage.getItem("nationality"));
+}
+
+function setEmail(value) {
+  sessionStorage.setItem("email", JSON.stringify(value));
+}
+
+function getEmail() {
+  return JSON.parse(sessionStorage.getItem("email"));
+}
+
+function setPhone(value) {
+  sessionStorage.setItem("phone", JSON.stringify(value));
+}
+
+function getPhone() {
+  return JSON.parse(sessionStorage.getItem("phone"));
+}
+
+function setAlternatePhone(value) {
+  sessionStorage.setItem("alternatephone", JSON.stringify(value));
+}
+
+function getAlternatePhone() {
+  return JSON.parse(sessionStorage.getItem("alternatephone"));
+}
+
+function setAddress(value) {
+  sessionStorage.setItem("address", JSON.stringify(value));
+}
+
+function getAddress() {
+  return JSON.parse(sessionStorage.getItem("address"));
+}
+
+function setCity(value) {
+  sessionStorage.setItem("city", JSON.stringify(value));
+}
+
+function getCity() {
+  return JSON.parse(sessionStorage.getItem("city"));
+}
+
+function setZip(value) {
+  sessionStorage.setItem("zip", JSON.stringify(value));
+}
+
+function getZip() {
+  return JSON.parse(sessionStorage.getItem("zip"));
+}
+
+function setCountry(value) {
+  sessionStorage.setItem("country", JSON.stringify(value));
+}
+
+function getCounrty() {
+  return JSON.parse(sessionStorage.getItem("country"));
 }
 
 function validateFirstName(firstName) {
@@ -158,4 +223,159 @@ function updateFirstPage(
   birthDateInput.value = getDate();
   genderInput.value = getGender() || "";
   nationalityInput.value = getNationality();
+}
+
+function isValidEmail(email) {
+  return /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(email);
+}
+
+function validateEmail(emailAddress) {
+  // if not valid Email
+  if (!isValidEmail(getEmail())) {
+    if (getEmail() !== "")
+      emailAddress.querySelector("p").textContent = "Enter valid email address";
+    emailAddress.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    emailAddress.querySelector("p").classList.add("hidden");
+    emailAddress.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function isValidPhoneNumber(phone) {
+  const cleaned = phone.replace(/[\s\-()]/g, ""); // strip spaces, dashes, parentheses
+  return /^\+?[0-9]{7,15}$/.test(cleaned);
+}
+
+function validatePhoneNumber(phoneNumber) {
+  // if not valid phone number
+  if (!isValidPhoneNumber(getPhone())) {
+    if (getPhone() !== "")
+      phoneNumber.querySelector("p").textContent = "Enter valid phone number";
+    phoneNumber.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    phoneNumber.querySelector("p").classList.add("hidden");
+    phoneNumber.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function validateAlternatePhoneNumber(alternateNumber) {
+  // if valid alternate phone number or empty
+  if (getAlternatePhone() === "" || isValidPhoneNumber(getAlternatePhone())) {
+    alternateNumber.querySelector("p").classList.add("hidden");
+    return true;
+  }
+  if (!isValidPhoneNumber(getAlternatePhone())) {
+    alternateNumber.querySelector("p").textContent = "Enter valid phone number";
+    alternateNumber.querySelector("p").classList.remove("hidden");
+    return false;
+  }
+}
+
+function isValidStreetAddress(address) {
+  return /^[a-zA-Z0-9\s.,#\-\/]{5,100}$/.test(address.trim());
+}
+
+function validateStreetAddress(streetAddress) {
+  // if not valid address
+  if (!isValidStreetAddress(getAddress())) {
+    if (getAddress() !== "")
+      streetAddress.querySelector("p").textContent = "Enter valid address";
+    streetAddress.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    streetAddress.querySelector("p").classList.add("hidden");
+    streetAddress.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function isValidCity(city) {
+  return /^[a-zA-Z\u00C0-\u024F'’\- ]{2,50}$/.test(city.trim());
+}
+
+function validateCity(city) {
+  // if not valid city
+  if (!isValidCity(getCity())) {
+    if (getCity() !== "")
+      city.querySelector("p").textContent = "Enter valid City";
+    city.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    city.querySelector("p").classList.add("hidden");
+    city.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function isValidZip(zip) {
+  return /^\d{4,10}$/.test(zip);
+}
+
+function validateZip(zip) {
+  // if not valid zip
+  if (!isValidZip(getZip())) {
+    if (getZip() !== "")
+      zip.querySelector("p").textContent = "Enter valid zip code";
+    zip.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    zip.querySelector("p").classList.add("hidden");
+    zip.querySelector("p").textContent = "This field is required";
+    return true;
+  }
+}
+
+function validateCountry(country) {
+  if (!getCounrty()) {
+    country.querySelector("p").classList.remove("hidden");
+    return false;
+  } else {
+    country.querySelector("p").classList.add("hidden");
+    return true;
+  }
+}
+
+function validateSecondPage(
+  emailAddress,
+  phoneNumber,
+  alternateNumber,
+  streetAddress,
+  city,
+  zip,
+  country
+) {
+  if (
+    validateEmail(emailAddress) &&
+    validatePhoneNumber(phoneNumber) &&
+    validateAlternatePhoneNumber(alternateNumber) &&
+    validateStreetAddress(streetAddress) &&
+    validateCity(city) &&
+    validateZip(zip) &&
+    validateCountry(country)
+  ) {
+    return true;
+  }
+  return false;
+}
+
+function updateSecondPage(
+  emailAddressInput,
+  phoneNumberInput,
+  alternateNumberInput,
+  streetAddressInput,
+  cityInput,
+  zipInput,
+  countryInput
+) {
+  emailAddressInput.value = getEmail();
+  phoneNumberInput.value = getPhone();
+  alternateNumberInput.value = getAlternatePhone();
+  streetAddressInput.value = getAddress();
+  cityInput.value = getCity();
+  zipInput.value = getZip();
+  countryInput.value = getCounrty();
 }

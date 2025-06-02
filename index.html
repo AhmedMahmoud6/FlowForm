@@ -129,7 +129,7 @@
           </div>
         </div>
 
-        <div class="step-2-content flex flex-col gap-6">
+        <div class="step-2-content flex flex-col gap-6 hidden">
           <h1 class="text-2xl font-bold">Contact Details</h1>
           <div
             class="email-container flex sm:flex-row flex-col justify-between gap-6"
@@ -220,6 +220,187 @@
             </select>
 
             <p class="text-red-500 text-xs hidden">This field is required</p>
+          </div>
+        </div>
+
+        <div class="step-3-content flex flex-col gap-5">
+          <h1 class="text-2xl font-bold">Preferences & Additional Info</h1>
+          <label class="text-[#333333]"
+            >Interests (Select all that apply)</label
+          >
+          <div class="checkbox-group grid grid-cols-3 gap-4">
+            <div
+              class="checkbox-item cursor-pointer cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="tech"
+                name="interests"
+                value="technology"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="tech"
+                >Technology</label
+              >
+            </div>
+            <div
+              class="checkbox-item cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="sports"
+                name="interests"
+                value="sports"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="sports"
+                >Sports</label
+              >
+            </div>
+            <div
+              class="checkbox-item cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="music"
+                name="interests"
+                value="music"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="music"
+                >Music</label
+              >
+            </div>
+            <div
+              class="checkbox-item cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="travel"
+                name="interests"
+                value="travel"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="travel"
+                >Travel</label
+              >
+            </div>
+            <div
+              class="checkbox-item cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="cooking"
+                name="interests"
+                value="cooking"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="cooking"
+                >Cooking</label
+              >
+            </div>
+            <div
+              class="checkbox-item cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="reading"
+                name="interests"
+                value="reading"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="reading"
+                >Reading</label
+              >
+            </div>
+          </div>
+
+          <div class="flex sm:flex-row flex-col justify-between gap-6">
+            <div
+              class="experience flex flex-col gap-2 sm:w-1/2 w-full relative"
+            >
+              <label for="years">Years of Experience</label>
+              <select
+                id="years"
+                name="years"
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 px-3 rounded-xl transition-all duration-300"
+              >
+                <option value="" disabled hidden selected>
+                  Select Experience
+                </option>
+
+                <option value="0-1 years">0-1 years</option>
+                <option value="2-5 years">2-5 years</option>
+                <option value="6-10 years">6-10 years</option>
+                <option value="11+ years">11+ years</option>
+              </select>
+            </div>
+            <div class="preferred flex flex-col gap-2 sm:w-1/2 w-full relative">
+              <label for="contact">Preferred Contact Method</label>
+              <select
+                id="contact"
+                name="contact"
+                class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-10 px-3 rounded-xl transition-all duration-300"
+              >
+                <option value="email" selected>Email</option>
+                <option value="phone">Phone</option>
+                <option value="sms">SMS</option>
+                <option value="mail">Mail</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="comments flex flex-col gap-2 w-full">
+            <label for="comment">Additional Comments</label>
+            <input
+              class="outline-2 outline-[#e0e0e0] bg-[#fafafa] focus:bg-white focus:outline-[#677fea] h-18 p-3 rounded-xl transition-all duration-300"
+              type="text"
+              id="comment"
+              placeholder="Any additional information you'd like to share..."
+            />
+            <p class="text-red-500 text-xs hidden">This field is required</p>
+          </div>
+
+          <div class="terms-and-newsletter flex flex-col gap-6">
+            <div
+              class="subscribe cursor-pointer cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input
+                class="h-full cursor-pointer"
+                type="checkbox"
+                id="subscribe"
+              />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="subscribe"
+                >Subscribe to newsletter</label
+              >
+            </div>
+            <div
+              class="terms cursor-pointer cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
+            >
+              <input class="h-full cursor-pointer" type="checkbox" id="terms" />
+              <label
+                class="h-full w-full flex items-center cursor-pointer"
+                for="terms"
+                >I agree to the terms and conditions *</label
+              >
+            </div>
+            <p class="text-red-500 text-xs hidden">
+              You must agree to the terms and conditions
+            </p>
           </div>
         </div>
       </div>

@@ -30,6 +30,11 @@ import {
   setComment,
   setNews,
   setTerms,
+  getGender,
+  getNationality,
+  getInterests,
+  getNews,
+  getComment,
 } from "./getAndSetFunctions.js";
 
 import {
@@ -56,6 +61,7 @@ import {
   validateTerms,
   validateThirdPage,
   updateThirdPage,
+  updateSummaryForm,
 } from "./functions.js";
 
 let progressBar = document.querySelector(".progress");
@@ -147,6 +153,9 @@ updateThirdPage(
   termsAndConditionsInput
 );
 
+// update summary form details
+updateSummaryForm();
+
 // render current step circle
 renderCurrentStep(steps);
 
@@ -188,13 +197,13 @@ nextBtn.addEventListener("click", (_) => {
       )
         return;
     }
-
     stepCounter += 1;
     setStepCounter(stepCounter);
     updateProgressBar(progressBar, "right");
     renderCurrentStep(steps);
     renderCurrentStepContent(stepsContent, prevBtn, nextBtn);
   }
+  updateSummaryForm();
 });
 
 prevBtn.addEventListener("click", (_) => {

@@ -304,3 +304,33 @@ export function updateInterests(checkboxes) {
     });
   }
 }
+
+export function updateSummaryForm() {
+  let summaryValues = document.querySelectorAll(".summary-value");
+
+  let formDetails = {
+    full_name_summary: getFirstName(),
+    birthdate_summary: getDate(),
+    gender_summary: getGender() || "Not specified",
+    nationality_summary: getNationality(),
+    email_summary: getEmail(),
+    phone_summary: getPhone(),
+    alternate_summary: getAlternatePhone(),
+    address_summary: getAddress(),
+    city_summary: getCity(),
+    zip_summary: getZip(),
+    country_summary: getCounrty(),
+    interests_summary: getInterests().join(", "),
+    experience_summary: getExperience(),
+    contact_summary: getContact(),
+    news_summary: getNews() === true ? "Yes" : "No",
+    comments_summary: getComment(),
+  };
+
+  summaryValues.forEach((element) => {
+    element.textContent =
+      formDetails[element.classList[1]] !== ""
+        ? formDetails[element.classList[1]]
+        : "Not provided";
+  });
+}

@@ -252,7 +252,7 @@ firstNameInput.addEventListener("input", (_) => {
     getFirstName,
     firstName,
     firstNameInput,
-    "Name can't be numbers or chars"
+    "Name can't be numbers or special chars"
   );
 });
 
@@ -263,7 +263,7 @@ lastNameInput.addEventListener("input", (_) => {
     getLastName,
     lastName,
     lastNameInput,
-    "Name can't be numbers or chars"
+    "Name can't be numbers or special chars"
   );
 });
 

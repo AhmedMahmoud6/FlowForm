@@ -10,10 +10,9 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
   <body
-    class="bg-gradient-to-r from-[#667eea] to-[#764ba2] flex items-center p-6"
+    class="bg-gradient-to-r from-[#667eea] to-[#764ba2] flex items-center p-6 max-[500px]:px-0"
   >
     <div
       class="container h-fit w-200 bg-white m-auto rounded-xl shadow-xl p-12 relative flex flex-col px-6"
@@ -21,7 +20,7 @@
       <div class="flex flex-col flex-grow gap-6">
         <div class="steps relative flex justify-between mb-10">
           <div
-            class="progress-cont absolute bg-[#e0e0e0] w-11/12 left-8 top-6 h-1"
+            class="progress-cont absolute bg-[#e0e0e0] w-11/12 left-8 max-[500px]:left-4 top-6 h-1"
           >
             <div
               class="progress bg-gradient-to-r from-[#667eea] to-[#764ba2] h-1 transition-all duration-500 ease"
@@ -35,7 +34,9 @@
             >
               1
             </div>
-            <p class="text-xs text-[#666]">Personal Info</p>
+            <p class="text-xs text-[#666] truncate max-[400px]:max-w-[61px]">
+              Personal Info
+            </p>
           </div>
 
           <div class="contact-details flex flex-col items-center gap-2 z-1">
@@ -44,7 +45,9 @@
             >
               2
             </div>
-            <p class="text-xs text-[#666]">Contact Details</p>
+            <p class="text-xs text-[#666] truncate max-[400px]:max-w-[61px]">
+              Contact Details
+            </p>
           </div>
 
           <div class="preferences flex flex-col items-center gap-2 z-1">
@@ -53,7 +56,9 @@
             >
               3
             </div>
-            <p class="text-xs text-[#666]">Preferences</p>
+            <p class="text-xs text-[#666] truncate max-[400px]:max-w-[61px]">
+              Preferences
+            </p>
           </div>
 
           <div class="summary flex flex-col items-center gap-2 z-1">
@@ -62,7 +67,9 @@
             >
               4
             </div>
-            <p class="text-xs text-[#666]">Summary</p>
+            <p class="text-xs text-[#666] truncate max-[400px]:max-w-[61px]">
+              Summary
+            </p>
           </div>
         </div>
 
@@ -230,7 +237,9 @@
           <label class="text-[#333333]"
             >Interests (Select all that apply)</label
           >
-          <div class="checkbox-group grid grid-cols-3 gap-4">
+          <div
+            class="checkbox-group grid grid-cols-3 max-[520px]:grid-cols-2 gap-4"
+          >
             <div
               class="checkbox-item cursor-pointer cursor-pointer outline-2 outline-[#e0e0e0] hover:bg-[#f8f9ff] hover:outline-[#667eea] transition-all duration-500 rounded-xl w-full h-14 flex gap-4 items-center pl-3"
             >
@@ -242,7 +251,7 @@
                 value="technology"
               />
               <label
-                class="h-full w-full flex items-center cursor-pointer"
+                class="h-full w-full flex items-center cursor-pointer max-[500px]:text-sm"
                 for="tech"
                 >Technology</label
               >
@@ -258,7 +267,7 @@
                 value="sports"
               />
               <label
-                class="h-full w-full flex items-center cursor-pointer"
+                class="h-full w-full flex items-center cursor-pointer max-[500px]:text-sm"
                 for="sports"
                 >Sports</label
               >
@@ -274,7 +283,7 @@
                 value="music"
               />
               <label
-                class="h-full w-full flex items-center cursor-pointer"
+                class="h-full w-full flex items-center cursor-pointer max-[500px]:text-sm"
                 for="music"
                 >Music</label
               >
@@ -290,7 +299,7 @@
                 value="travel"
               />
               <label
-                class="h-full w-full flex items-center cursor-pointer"
+                class="h-full w-full flex items-center cursor-pointer max-[500px]:text-sm"
                 for="travel"
                 >Travel</label
               >
@@ -306,7 +315,7 @@
                 value="cooking"
               />
               <label
-                class="h-full w-full flex items-center cursor-pointer"
+                class="h-full w-full flex items-center cursor-pointer max-[500px]:text-sm"
                 for="cooking"
                 >Cooking</label
               >
@@ -322,7 +331,7 @@
                 value="reading"
               />
               <label
-                class="h-full w-full flex items-center cursor-pointer"
+                class="h-full w-full flex items-center cursor-pointer max-[500px]:text-sm"
                 for="reading"
                 >Reading</label
               >
@@ -427,7 +436,8 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Full Name:</span>
-                    <span class="summary-value full_name_summary"
+                    <span
+                      class="summary-value full_name_summary truncate max-[400px]:max-w-[120px]"
                       >Ahmed Mahmoud</span
                     >
                   </div>
@@ -435,7 +445,8 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Date of Birth:</span>
-                    <span class="summary-value birthdate_summary"
+                    <span
+                      class="summary-value birthdate_summary truncate max-[400px]:max-w-[100px]"
                       >2025-06-17</span
                     >
                   </div>
@@ -451,7 +462,8 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Nationality:</span>
-                    <span class="summary-value nationality_summary"
+                    <span
+                      class="summary-value nationality_summary truncate max-[400px]:max-w-[100px]"
                       >Not provided</span
                     >
                   </div>
@@ -467,7 +479,8 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Email:</span>
-                    <span class="summary-value email_summary"
+                    <span
+                      class="summary-value email_summary truncate max-[400px]:max-w-[150px]"
                       >aywa400@gmail.com</span
                     >
                   </div>
@@ -475,13 +488,17 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Phone:</span>
-                    <span class="summary-value phone_summary">01068322147</span>
+                    <span
+                      class="summary-value phone_summary truncate max-[400px]:max-w-[140px]"
+                      >01068322147</span
+                    >
                   </div>
                   <div
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Alternate Phone:</span>
-                    <span class="summary-value alternate_summary"
+                    <span
+                      class="summary-value alternate_summary truncate max-[400px]:max-w-[140px]"
                       >Not provided</span
                     >
                   </div>
@@ -489,19 +506,28 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Address:</span>
-                    <span class="summary-value address_summary">gh</span>
+                    <span
+                      class="summary-value address_summary truncate max-[400px]:max-w-[130px]"
+                      >gh</span
+                    >
                   </div>
                   <div
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">City:</span>
-                    <span class="summary-value city_summary">Cairo</span>
+                    <span
+                      class="summary-value city_summary truncate max-[400px]:max-w-[140px]"
+                      >Cairo</span
+                    >
                   </div>
                   <div
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">ZIP Code:</span>
-                    <span class="summary-value zip_summary">1421245</span>
+                    <span
+                      class="summary-value zip_summary truncate max-[400px]:max-w-[120px]"
+                      >1421245</span
+                    >
                   </div>
                   <div
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
@@ -521,7 +547,8 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Interests:</span>
-                    <span class="summary-value interests_summary"
+                    <span
+                      class="summary-value interests_summary truncate max-[400px]:max-w-[140px]"
                       >None selected</span
                     >
                   </div>
@@ -547,7 +574,8 @@
                     class="summary-item flex justify-between border-b-1 border-[#e0e0e0] py-2"
                   >
                     <span class="summary-label">Comments:</span>
-                    <span class="summary-value comments_summary"
+                    <span
+                      class="summary-value comments_summary truncate max-[400px]:max-w-[125px]"
                       >None provided</span
                     >
                   </div>

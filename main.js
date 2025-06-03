@@ -120,6 +120,7 @@ let additionalCommentInput = document.querySelector(".comments input");
 
 let newsLetterInput = document.querySelector(".subscribe input");
 
+let terms = document.querySelector(".terms");
 let termsAndConditions = document.querySelector(".terms-and-newsletter");
 let termsAndConditionsInput = document.querySelector(".terms input");
 
@@ -169,7 +170,17 @@ nextBtn.addEventListener("click", (_) => {
   if (stepCounter !== 4) {
     // validate first page
     if (stepCounter === 1) {
-      if (!validateFirstPage(firstName, lastName, birthDate)) return;
+      if (
+        !validateFirstPage(
+          firstName,
+          firstNameInput,
+          lastName,
+          lastNameInput,
+          birthDate,
+          birthDateInput
+        )
+      )
+        return;
     }
 
     // validate second page
@@ -177,12 +188,19 @@ nextBtn.addEventListener("click", (_) => {
       if (
         !validateSecondPage(
           emailAddress,
+          emailAddressInput,
           phoneNumber,
+          phoneNumberInput,
           alternateNumber,
+          alternateNumberInput,
           streetAddress,
+          streetAddressInput,
           city,
+          cityInput,
           zip,
-          country
+          zipInput,
+          country,
+          countryInput
         )
       )
         return;
@@ -192,8 +210,11 @@ nextBtn.addEventListener("click", (_) => {
         !validateThirdPage(
           checkboxGroup,
           yearsOfExperience,
+          yearsOfExperienceInput,
           contactMethod,
-          termsAndConditions
+          contactMethodInput,
+          termsAndConditions,
+          terms
         )
       )
         return;
@@ -230,6 +251,7 @@ firstNameInput.addEventListener("input", (_) => {
     isAlpha,
     getFirstName,
     firstName,
+    firstNameInput,
     "Name can't be numbers or chars"
   );
 });
@@ -240,13 +262,20 @@ lastNameInput.addEventListener("input", (_) => {
     isAlpha,
     getLastName,
     lastName,
+    lastNameInput,
     "Name can't be numbers or chars"
   );
 });
 
 birthDateInput.addEventListener("change", (_) => {
   setDate(birthDateInput.value.trim());
-  validateField(isValidDate, getDate, birthDate, "write a valid date");
+  validateField(
+    isValidDate,
+    getDate,
+    birthDate,
+    birthDateInput,
+    "write a valid date"
+  );
 });
 
 genderInput.addEventListener("change", (_) => {
@@ -263,6 +292,7 @@ emailAddressInput.addEventListener("input", (_) => {
     isValidEmail,
     getEmail,
     emailAddress,
+    emailAddressInput,
     "Enter valid email address"
   );
 });
@@ -273,6 +303,7 @@ phoneNumberInput.addEventListener("input", (_) => {
     isValidPhoneNumber,
     getPhone,
     phoneNumber,
+    phoneNumberInput,
     "Enter valid phone number"
   );
 });
@@ -283,6 +314,7 @@ alternateNumberInput.addEventListener("input", (_) => {
     isValidPhoneNumber,
     getAlternatePhone,
     alternateNumber,
+    alternateNumberInput,
     "Enter valid phone number",
     false
   );
@@ -294,23 +326,30 @@ streetAddressInput.addEventListener("input", (_) => {
     isValidStreetAddress,
     getAddress,
     streetAddress,
+    streetAddressInput,
     "Enter valid address"
   );
 });
 
 cityInput.addEventListener("input", (_) => {
   setCity(cityInput.value);
-  validateField(isValidCity, getCity, city, "Enter valid city");
+  validateField(isValidCity, getCity, city, cityInput, "Enter valid city");
 });
 
 zipInput.addEventListener("input", (_) => {
   setZip(zipInput.value);
-  validateField(isValidZip, getZip, zip, "Enter valid zip code");
+  validateField(isValidZip, getZip, zip, zipInput, "Enter valid zip code");
 });
 
 countryInput.addEventListener("change", (_) => {
   setCountry(countryInput.value);
-  validateField(isValidCountry, getCounrty, country, "Select Country");
+  validateField(
+    isValidCountry,
+    getCounrty,
+    country,
+    countryInput,
+    "Select Country"
+  );
 });
 
 checkboxGroup.addEventListener("change", (_) => {
@@ -323,6 +362,7 @@ yearsOfExperienceInput.addEventListener("change", (_) => {
     isValidExperience,
     getExperience,
     yearsOfExperience,
+    yearsOfExperienceInput,
     "Select Experience"
   );
 });
@@ -335,6 +375,7 @@ contactMethodInput.addEventListener("change", (_) => {
     isValidContactMethod,
     getContact,
     contactMethod,
+    contactMethodInput,
     "Select contact method"
   );
 });
@@ -349,5 +390,5 @@ newsLetterInput.addEventListener("change", (_) => {
 
 termsAndConditionsInput.addEventListener("change", (_) => {
   setTerms(termsAndConditionsInput.checked);
-  validateTerms(termsAndConditions);
+  validateTerms(termsAndConditions, terms);
 });

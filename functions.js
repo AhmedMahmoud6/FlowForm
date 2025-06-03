@@ -82,6 +82,7 @@ export function validateField(
   isValidField,
   getFieldData,
   field,
+  fieldInput,
   customErrorMsg = "Enter a valid value",
   isRequired = true
 ) {
@@ -91,6 +92,7 @@ export function validateField(
   if (isRequired && value === "") {
     field.querySelector("p").textContent = "This field is required";
     field.querySelector("p").classList.remove("hidden");
+    fieldInput.classList.add("outline-red-400");
     return false;
   }
 
@@ -98,19 +100,46 @@ export function validateField(
   if (!isValidField(value) && value !== "") {
     field.querySelector("p").textContent = customErrorMsg;
     field.querySelector("p").classList.remove("hidden");
+    fieldInput.classList.add("outline-red-400");
     return false;
   }
 
   // if not required and valid input or even empty
   field.querySelector("p").classList.add("hidden");
+  fieldInput.classList.remove("outline-red-400");
   return true;
 }
 
-export function validateFirstPage(firstName, lastName, birthDate) {
+export function validateFirstPage(
+  firstName,
+  firstNameInput,
+  lastName,
+  lastNameInput,
+  birthDate,
+  birthDateInput
+) {
   return (
-    validateField(isAlpha, getFirstName, firstName, "Invalid first name") &&
-    validateField(isAlpha, getLastName, lastName, "Invalid last name") &&
-    validateField(isValidDate, getDate, birthDate, "write a valid date")
+    validateField(
+      isAlpha,
+      getFirstName,
+      firstName,
+      firstNameInput,
+      "Invalid first name"
+    ) &&
+    validateField(
+      isAlpha,
+      getLastName,
+      lastName,
+      lastNameInput,
+      "Invalid last name"
+    ) &&
+    validateField(
+      isValidDate,
+      getDate,
+      birthDate,
+      birthDateInput,
+      "write a valid date"
+    )
   );
 }
 
@@ -155,30 +184,40 @@ export function isValidCountry(country) {
 
 export function validateSecondPage(
   emailAddress,
+  emailAddressInput,
   phoneNumber,
+  phoneNumberInput,
   alternateNumber,
+  alternateNumberInput,
   streetAddress,
+  streetAddressInput,
   city,
+  cityInput,
   zip,
-  country
+  zipInput,
+  country,
+  countryInput
 ) {
   return (
     validateField(
       isValidEmail,
       getEmail,
       emailAddress,
+      emailAddressInput,
       "Enter valid email address"
     ) &&
     validateField(
       isValidPhoneNumber,
       getPhone,
       phoneNumber,
+      phoneNumberInput,
       "Enter valid phone number"
     ) &&
     validateField(
       isValidPhoneNumber,
       getAlternatePhone,
       alternateNumber,
+      alternateNumberInput,
       "Enter valid phone number",
       false
     ) &&
@@ -186,11 +225,18 @@ export function validateSecondPage(
       isValidStreetAddress,
       getAddress,
       streetAddress,
+      streetAddressInput,
       "Enter valid address"
     ) &&
-    validateField(isValidCity, getCity, city, "Enter valid city") &&
-    validateField(isValidZip, getZip, zip, "Enter valid zip code") &&
-    validateField(isValidCountry, getCounrty, country, "Select Country")
+    validateField(isValidCity, getCity, city, cityInput, "Enter valid city") &&
+    validateField(isValidZip, getZip, zip, zipInput, "Enter valid zip code") &&
+    validateField(
+      isValidCountry,
+      getCounrty,
+      country,
+      countryInput,
+      "Select Country"
+    )
   );
 }
 
@@ -239,12 +285,14 @@ export function validateInterests(fieldContainer) {
   }
 }
 
-export function validateTerms(terms) {
+export function validateTerms(terms, termsInput) {
   if (getTerms()) {
     terms.querySelector("p").classList.add("hidden");
+    termsInput.classList.remove("outline-red-400");
     return true;
   }
   terms.querySelector("p").classList.remove("hidden");
+  termsInput.classList.add("outline-red-400");
   return false;
 }
 
@@ -259,8 +307,11 @@ export function isValidContactMethod(contact) {
 export function validateThirdPage(
   checkboxGroup,
   yearsOfExperience,
+  yearsOfExperienceInput,
   contactMethod,
-  termsAndConditions
+  contactMethodInput,
+  termsAndConditions,
+  terms
 ) {
   return (
     validateInterests(checkboxGroup) &&
@@ -268,15 +319,17 @@ export function validateThirdPage(
       isValidExperience,
       getExperience,
       yearsOfExperience,
+      yearsOfExperienceInput,
       "Select Experience"
     ) &&
     validateField(
       isValidContactMethod,
       getContact,
       contactMethod,
+      contactMethodInput,
       "Select contact method"
     ) &&
-    validateTerms(termsAndConditions)
+    validateTerms(termsAndConditions, terms)
   );
 }
 

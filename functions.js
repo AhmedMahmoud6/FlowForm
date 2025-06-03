@@ -62,70 +62,49 @@ export function currentProgressBar(stepCounter, progressBar) {
   progressBar.style = `width: ${stepProgressWidth}%`;
 }
 
-function isAlpha(str) {
+export function isAlpha(str) {
   return /^[a-zA-Z]+[0-9]*[a-zA-Z]*$/.test(str);
 }
 
-export function validateFirstName(firstName) {
-  // if first Name is a number or char
-  if (!isAlpha(getFirstName())) {
-    if (getFirstName() !== "")
-      firstName.querySelector("p").textContent = "Name can't be numbers";
-    firstName.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    firstName.querySelector("p").classList.add("hidden");
-    firstName.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-export function validateLastName(lastName) {
-  // if last Name is a number or char
-  if (!isAlpha(getLastName())) {
-    if (getLastName() !== "")
-      lastName.querySelector("p").textContent = "Name can't be numbers";
-    lastName.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    lastName.querySelector("p").classList.add("hidden");
-    lastName.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-function isValidDate(value) {
+export function isValidDate(value) {
   const date = new Date(value);
   return value !== "" && !isNaN(date.getTime());
 }
 
-export function validateDate(birthDate) {
-  if (!isValidDate(getDate())) {
-    if (getDate() !== "")
-      birthDate.querySelector("p").textContent = "write a valid date";
-    birthDate.querySelector("p").classList.remove("hidden");
+export function validateField(
+  isValidField,
+  getFieldData,
+  field,
+  customErrorMsg = "Enter a valid value",
+  isRequired = true
+) {
+  const value = getFieldData();
+
+  // if required and empty
+  if (isRequired && value === "") {
+    field.querySelector("p").textContent = "This field is required";
+    field.querySelector("p").classList.remove("hidden");
     return false;
-  } else {
-    birthDate.querySelector("p").classList.add("hidden");
-    birthDate.querySelector("p").textContent = "This field is required";
-    return true;
   }
+
+  // if not valid input
+  if (!isValidField(value)) {
+    field.querySelector("p").textContent = customErrorMsg;
+    field.querySelector("p").classList.remove("hidden");
+    return false;
+  }
+
+  // if not required and valid input or even empty
+  field.querySelector("p").classList.add("hidden");
+  return true;
 }
 
-export function validateFirstPage(
-  firstName,
-  lastName,
-  birthDate,
-  birthDateInput
-) {
-  if (
-    validateFirstName(firstName) &&
-    validateLastName(lastName) &&
-    validateDate(birthDate, birthDateInput)
-  ) {
-    return true;
-  }
-  return false;
+export function validateFirstPage(firstName, lastName, birthDate) {
+  return (
+    validateField(isAlpha, getFirstName, firstName, "Invalid first name") &&
+    validateField(isAlpha, getLastName, lastName, "Invalid last name") &&
+    validateField(isValidDate, getDate, birthDate, "write a valid date")
+  );
 }
 
 export function updateFirstPage(
@@ -142,118 +121,29 @@ export function updateFirstPage(
   nationalityInput.value = getNationality();
 }
 
-function isValidEmail(email) {
+export function isValidEmail(email) {
   return /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(email);
 }
 
-export function validateEmail(emailAddress) {
-  // if not valid Email
-  if (!isValidEmail(getEmail())) {
-    if (getEmail() !== "")
-      emailAddress.querySelector("p").textContent = "Enter valid email address";
-    emailAddress.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    emailAddress.querySelector("p").classList.add("hidden");
-    emailAddress.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-function isValidPhoneNumber(phone) {
+export function isValidPhoneNumber(phone) {
   const cleaned = phone.replace(/[\s\-()]/g, ""); // strip spaces, dashes, parentheses
   return /^\+?[0-9]{7,15}$/.test(cleaned);
 }
 
-export function validatePhoneNumber(phoneNumber) {
-  // if not valid phone number
-  if (!isValidPhoneNumber(getPhone())) {
-    if (getPhone() !== "")
-      phoneNumber.querySelector("p").textContent = "Enter valid phone number";
-    phoneNumber.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    phoneNumber.querySelector("p").classList.add("hidden");
-    phoneNumber.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-export function validateAlternatePhoneNumber(alternateNumber) {
-  // if valid alternate phone number or empty
-  if (getAlternatePhone() === "" || isValidPhoneNumber(getAlternatePhone())) {
-    alternateNumber.querySelector("p").classList.add("hidden");
-    return true;
-  }
-  if (!isValidPhoneNumber(getAlternatePhone())) {
-    alternateNumber.querySelector("p").textContent = "Enter valid phone number";
-    alternateNumber.querySelector("p").classList.remove("hidden");
-    return false;
-  }
-}
-
-function isValidStreetAddress(address) {
+export function isValidStreetAddress(address) {
   return /^[a-zA-Z0-9\s.,#\-\/]{5,100}$/.test(address.trim());
 }
 
-export function validateStreetAddress(streetAddress) {
-  // if not valid address
-  if (!isValidStreetAddress(getAddress())) {
-    if (getAddress() !== "")
-      streetAddress.querySelector("p").textContent = "Enter valid address";
-    streetAddress.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    streetAddress.querySelector("p").classList.add("hidden");
-    streetAddress.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-function isValidCity(city) {
+export function isValidCity(city) {
   return /^[a-zA-Z\u00C0-\u024F'’\- ]{2,50}$/.test(city.trim());
 }
 
-export function validateCity(city) {
-  // if not valid city
-  if (!isValidCity(getCity())) {
-    if (getCity() !== "")
-      city.querySelector("p").textContent = "Enter valid City";
-    city.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    city.querySelector("p").classList.add("hidden");
-    city.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-function isValidZip(zip) {
+export function isValidZip(zip) {
   return /^\d{4,10}$/.test(zip);
 }
 
-export function validateZip(zip) {
-  // if not valid zip
-  if (!isValidZip(getZip())) {
-    if (getZip() !== "")
-      zip.querySelector("p").textContent = "Enter valid zip code";
-    zip.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    zip.querySelector("p").classList.add("hidden");
-    zip.querySelector("p").textContent = "This field is required";
-    return true;
-  }
-}
-
-export function validateCountry(country) {
-  if (!getCounrty()) {
-    country.querySelector("p").classList.remove("hidden");
-    return false;
-  } else {
-    country.querySelector("p").classList.add("hidden");
-    return true;
-  }
+export function isValidCountry(country) {
+  return country !== "";
 }
 
 export function validateSecondPage(
@@ -265,18 +155,36 @@ export function validateSecondPage(
   zip,
   country
 ) {
-  if (
-    validateEmail(emailAddress) &&
-    validatePhoneNumber(phoneNumber) &&
-    validateAlternatePhoneNumber(alternateNumber) &&
-    validateStreetAddress(streetAddress) &&
-    validateCity(city) &&
-    validateZip(zip) &&
-    validateCountry(country)
-  ) {
-    return true;
-  }
-  return false;
+  return (
+    validateField(
+      isValidEmail,
+      getEmail,
+      emailAddress,
+      "Enter valid email address"
+    ) &&
+    validateField(
+      isValidPhoneNumber,
+      getPhone,
+      phoneNumber,
+      "Enter valid phone number"
+    ) &&
+    validateField(
+      isValidPhoneNumber,
+      getAlternatePhone,
+      alternateNumber,
+      "Enter valid phone number",
+      false
+    ) &&
+    validateField(
+      isValidStreetAddress,
+      getAddress,
+      streetAddress,
+      "Enter valid address"
+    ) &&
+    validateField(isValidCity, getCity, city, "Enter valid city") &&
+    validateField(isValidZip, getZip, zip, "Enter valid zip code") &&
+    validateField(isValidCountry, getCounrty, country, "Select Country")
+  );
 }
 
 export function updateSecondPage(

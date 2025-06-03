@@ -13,6 +13,16 @@ import {
   setPhone,
   setStepCounter,
   setZip,
+  getFirstName,
+  getLastName,
+  getDate,
+  getEmail,
+  getPhone,
+  getAlternatePhone,
+  getAddress,
+  getCity,
+  getZip,
+  getCounrty,
 } from "./getAndSetFunctions.js";
 
 import {
@@ -22,18 +32,17 @@ import {
   updateFirstPage,
   updateProgressBar,
   updateSecondPage,
-  validateAlternatePhoneNumber,
-  validateCity,
-  validateCountry,
-  validateDate,
-  validateEmail,
-  validateFirstName,
   validateFirstPage,
-  validateLastName,
-  validatePhoneNumber,
   validateSecondPage,
-  validateStreetAddress,
-  validateZip,
+  isAlpha,
+  validateField,
+  isValidDate,
+  isValidEmail,
+  isValidPhoneNumber,
+  isValidStreetAddress,
+  isValidCity,
+  isValidZip,
+  isValidCountry,
 } from "./functions.js";
 
 let progressBar = document.querySelector(".progress");
@@ -55,6 +64,7 @@ let birthDate = document.querySelector(".birth");
 let birthDateInput = document.querySelector(".birth input");
 
 let genderInput = document.querySelector("#gender");
+
 let nationalityInput = document.querySelector(".nationality input");
 
 let emailAddress = document.querySelector(".email");
@@ -111,8 +121,7 @@ nextBtn.addEventListener("click", (_) => {
   if (stepCounter !== 4) {
     // validate first page
     if (stepCounter === 1) {
-      if (!validateFirstPage(firstName, lastName, birthDate, birthDateInput))
-        return;
+      if (!validateFirstPage(firstName, lastName, birthDate)) return;
     }
 
     // validate second page
@@ -151,17 +160,28 @@ prevBtn.addEventListener("click", (_) => {
 
 firstNameInput.addEventListener("input", (_) => {
   setFirstName(firstNameInput.value.trim());
-  validateFirstName(firstName);
+  // validateFirstName(firstName);
+  validateField(
+    isAlpha,
+    getFirstName,
+    firstName,
+    "Name can't be numbers or chars"
+  );
 });
 
 lastNameInput.addEventListener("input", (_) => {
   setLastName(lastNameInput.value.trim());
-  validateLastName(lastName);
+  validateField(
+    isAlpha,
+    getLastName,
+    lastName,
+    "Name can't be numbers or chars"
+  );
 });
 
 birthDateInput.addEventListener("change", (_) => {
   setDate(birthDateInput.value.trim());
-  validateDate(birthDate);
+  validateField(isValidDate, getDate, birthDate, "write a valid date");
 });
 
 genderInput.addEventListener("change", (_) => {
@@ -174,35 +194,56 @@ nationalityInput.addEventListener("input", (_) => {
 
 emailAddressInput.addEventListener("input", (_) => {
   setEmail(emailAddressInput.value);
-  validateEmail(emailAddress);
+  validateField(
+    isValidEmail,
+    getEmail,
+    emailAddress,
+    "Enter valid email address"
+  );
 });
 
 phoneNumberInput.addEventListener("input", (_) => {
   setPhone(phoneNumberInput.value);
-  validatePhoneNumber(phoneNumber);
+  validateField(
+    isValidPhoneNumber,
+    getPhone,
+    phoneNumber,
+    "Enter valid phone number"
+  );
 });
 
 alternateNumberInput.addEventListener("input", (_) => {
   setAlternatePhone(alternateNumberInput.value);
-  validateAlternatePhoneNumber(alternateNumber);
+  validateField(
+    isValidPhoneNumber,
+    getAlternatePhone,
+    alternateNumber,
+    "Enter valid phone number",
+    false
+  );
 });
 
 streetAddressInput.addEventListener("input", (_) => {
   setAddress(streetAddressInput.value);
-  validateStreetAddress(streetAddress);
+  validateField(
+    isValidStreetAddress,
+    getAddress,
+    streetAddress,
+    "Enter valid address"
+  );
 });
 
 cityInput.addEventListener("input", (_) => {
   setCity(cityInput.value);
-  validateCity(city);
+  validateField(isValidCity, getCity, city, "Enter valid city");
 });
 
 zipInput.addEventListener("input", (_) => {
   setZip(zipInput.value);
-  validateZip(zip);
+  validateField(isValidZip, getZip, zip, "Enter valid zip code");
 });
 
 countryInput.addEventListener("change", (_) => {
   setCountry(countryInput.value);
-  validateCountry(country);
+  validateField(isValidCountry, getCounrty, country, "Select Country");
 });

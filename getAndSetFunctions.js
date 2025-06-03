@@ -107,5 +107,45 @@ export function setInterests(value) {
 }
 
 export function getInterests() {
-  return JSON.parse(sessionStorage.getItem("interests")) || "";
+  return JSON.parse(sessionStorage.getItem("interests")) || [];
+}
+
+export function setExperience(value) {
+  sessionStorage.setItem("experience", JSON.stringify(value));
+}
+
+export function getExperience() {
+  return JSON.parse(sessionStorage.getItem("experience")) || "";
+}
+
+export function setContact(value) {
+  sessionStorage.setItem("contact", JSON.stringify(value));
+}
+
+export function getContact() {
+  return JSON.parse(sessionStorage.getItem("contact")) || "email";
+}
+
+export function setComment(value) {
+  sessionStorage.setItem("comment", JSON.stringify(value));
+}
+
+export function getComment() {
+  return JSON.parse(sessionStorage.getItem("comment")) || "";
+}
+
+export function setNews(value) {
+  sessionStorage.setItem("news", JSON.stringify(value));
+}
+
+export function getNews() {
+  return JSON.parse(sessionStorage.getItem("news")) || JSON.parse("false");
+}
+
+export function setTerms(value) {
+  sessionStorage.setItem("terms", JSON.stringify(value));
+}
+
+export function getTerms() {
+  return JSON.parse(sessionStorage.getItem("terms")) || JSON.parse("false");
 }

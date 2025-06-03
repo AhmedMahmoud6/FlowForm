@@ -2,15 +2,21 @@ import {
   getAddress,
   getAlternatePhone,
   getCity,
+  getComment,
+  getContact,
   getCounrty,
   getDate,
   getEmail,
+  getExperience,
   getFirstName,
   getGender,
+  getInterests,
   getLastName,
   getNationality,
+  getNews,
   getPhone,
   getStepCounter,
+  getTerms,
   getZip,
   setInterests,
 } from "./getAndSetFunctions.js";
@@ -89,7 +95,7 @@ export function validateField(
   }
 
   // if not valid input
-  if (!isValidField(value)) {
+  if (!isValidField(value) && value !== "") {
     field.querySelector("p").textContent = customErrorMsg;
     field.querySelector("p").classList.remove("hidden");
     return false;
@@ -230,5 +236,71 @@ export function validateInterests(fieldContainer) {
       element.classList.remove("outline-red-400");
     });
     return true;
+  }
+}
+
+export function validateTerms(terms) {
+  if (getTerms()) {
+    terms.querySelector("p").classList.add("hidden");
+    return true;
+  }
+  terms.querySelector("p").classList.remove("hidden");
+  return false;
+}
+
+export function isValidExperience(experience) {
+  return experience !== "";
+}
+
+export function isValidContactMethod(contact) {
+  return contact !== "";
+}
+
+export function validateThirdPage(
+  checkboxGroup,
+  yearsOfExperience,
+  contactMethod,
+  termsAndConditions
+) {
+  return (
+    validateInterests(checkboxGroup) &&
+    validateField(
+      isValidExperience,
+      getExperience,
+      yearsOfExperience,
+      "Select Experience"
+    ) &&
+    validateField(
+      isValidContactMethod,
+      getContact,
+      contactMethod,
+      "Select contact method"
+    ) &&
+    validateTerms(termsAndConditions)
+  );
+}
+
+export function updateThirdPage(
+  checkboxes,
+  yearsOfExperienceInput,
+  contactMethodInput,
+  additionalCommentInput,
+  newsLetterInput,
+  termsAndConditionsInput
+) {
+  updateInterests(checkboxes);
+  yearsOfExperienceInput.value = getExperience();
+  contactMethodInput.value = getContact();
+  additionalCommentInput.value = getComment();
+  newsLetterInput.checked = getNews();
+  termsAndConditionsInput.checked = getTerms();
+}
+
+export function updateInterests(checkboxes) {
+  for (let currCheckbox of checkboxes) {
+    getInterests().forEach((element) => {
+      if (element === currCheckbox.value) currCheckbox.checked = true;
+      return;
+    });
   }
 }

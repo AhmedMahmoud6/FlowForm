@@ -23,6 +23,17 @@ import {
   getCity,
   getZip,
   getCounrty,
+  setExperience,
+  getExperience,
+  setContact,
+  getContact,
+  setComment,
+  setNews,
+  setTerms,
+  getTerms,
+  getInterests,
+  getComment,
+  getNews,
 } from "./getAndSetFunctions.js";
 
 import {
@@ -44,6 +55,12 @@ import {
   isValidZip,
   isValidCountry,
   validateInterests,
+  isValidExperience,
+  isValidContactMethod,
+  validateTerms,
+  validateThirdPage,
+  updateInterests,
+  updateThirdPage,
 } from "./functions.js";
 
 let progressBar = document.querySelector(".progress");
@@ -90,6 +107,20 @@ let country = document.querySelector(".country");
 let countryInput = document.querySelector("#country");
 
 let checkboxGroup = document.querySelector(".checkbox-group");
+let checkboxes = checkboxGroup.querySelectorAll("input[type='checkbox']");
+
+let yearsOfExperience = document.querySelector(".experience");
+let yearsOfExperienceInput = document.querySelector(".experience select");
+
+let contactMethod = document.querySelector(".preferred");
+let contactMethodInput = document.querySelector(".preferred select");
+
+let additionalCommentInput = document.querySelector(".comments input");
+
+let newsLetterInput = document.querySelector(".subscribe input");
+
+let termsAndConditions = document.querySelector(".terms-and-newsletter");
+let termsAndConditionsInput = document.querySelector(".terms input");
 
 // update first page details
 updateFirstPage(
@@ -109,6 +140,16 @@ updateSecondPage(
   cityInput,
   zipInput,
   countryInput
+);
+
+// update third page details
+updateThirdPage(
+  checkboxes,
+  yearsOfExperienceInput,
+  contactMethodInput,
+  additionalCommentInput,
+  newsLetterInput,
+  termsAndConditionsInput
 );
 
 // render current step circle
@@ -138,6 +179,16 @@ nextBtn.addEventListener("click", (_) => {
           city,
           zip,
           country
+        )
+      )
+        return;
+    } else if (stepCounter === 3) {
+      if (
+        !validateThirdPage(
+          checkboxGroup,
+          yearsOfExperience,
+          contactMethod,
+          termsAndConditions
         )
       )
         return;
@@ -253,4 +304,39 @@ countryInput.addEventListener("change", (_) => {
 
 checkboxGroup.addEventListener("change", (_) => {
   validateInterests(checkboxGroup);
+});
+
+yearsOfExperienceInput.addEventListener("change", (_) => {
+  setExperience(yearsOfExperienceInput.value);
+  validateField(
+    isValidExperience,
+    getExperience,
+    yearsOfExperience,
+    "Select Experience"
+  );
+});
+
+setContact(contactMethodInput.value);
+contactMethodInput.addEventListener("change", (_) => {
+  setContact(contactMethodInput.value);
+
+  validateField(
+    isValidContactMethod,
+    getContact,
+    contactMethod,
+    "Select contact method"
+  );
+});
+
+additionalCommentInput.addEventListener("input", (_) => {
+  setComment(additionalCommentInput.value);
+});
+
+newsLetterInput.addEventListener("change", (_) => {
+  setNews(newsLetterInput.checked);
+});
+
+termsAndConditionsInput.addEventListener("change", (_) => {
+  setTerms(termsAndConditionsInput.checked);
+  validateTerms(termsAndConditions);
 });

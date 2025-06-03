@@ -362,7 +362,7 @@ export function updateSummaryForm() {
   let summaryValues = document.querySelectorAll(".summary-value");
 
   let formDetails = {
-    full_name_summary: getFirstName(),
+    full_name_summary: `${getFirstName()} ${getLastName()}`,
     birthdate_summary: getDate(),
     gender_summary: getGender() || "Not specified",
     nationality_summary: getNationality(),

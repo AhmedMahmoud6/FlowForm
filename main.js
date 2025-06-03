@@ -43,6 +43,7 @@ import {
   isValidCity,
   isValidZip,
   isValidCountry,
+  validateInterests,
 } from "./functions.js";
 
 let progressBar = document.querySelector(".progress");
@@ -87,6 +88,8 @@ let zipInput = document.querySelector(".zip-code input");
 
 let country = document.querySelector(".country");
 let countryInput = document.querySelector("#country");
+
+let checkboxGroup = document.querySelector(".checkbox-group");
 
 // update first page details
 updateFirstPage(
@@ -246,4 +249,8 @@ zipInput.addEventListener("input", (_) => {
 countryInput.addEventListener("change", (_) => {
   setCountry(countryInput.value);
   validateField(isValidCountry, getCounrty, country, "Select Country");
+});
+
+checkboxGroup.addEventListener("change", (_) => {
+  validateInterests(checkboxGroup);
 });

@@ -12,6 +12,7 @@ import {
   getPhone,
   getStepCounter,
   getZip,
+  setInterests,
 } from "./getAndSetFunctions.js";
 
 let stepProgressWidth = 0;
@@ -203,4 +204,31 @@ export function updateSecondPage(
   cityInput.value = getCity();
   zipInput.value = getZip();
   countryInput.value = getCounrty();
+}
+
+export function validateInterests(fieldContainer) {
+  const checkboxItems = fieldContainer.querySelectorAll(".checkbox-item");
+  const checkboxes = fieldContainer.querySelectorAll("input[type='checkbox']");
+  const errorElement = fieldContainer.querySelector("p");
+
+  const selectedValues = Array.from(checkboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
+
+  setInterests(selectedValues); // update to session storage
+
+  if (selectedValues.length === 0) {
+    errorElement.textContent = "Please select at least one interest.";
+    errorElement.classList.remove("hidden");
+    checkboxItems.forEach((element) => {
+      element.classList.add("outline-red-400");
+    });
+    return false;
+  } else {
+    errorElement.classList.add("hidden");
+    checkboxItems.forEach((element) => {
+      element.classList.remove("outline-red-400");
+    });
+    return true;
+  }
 }

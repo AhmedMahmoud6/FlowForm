@@ -101,3 +101,11 @@ export function setCountry(value) {
 export function getCounrty() {
   return JSON.parse(sessionStorage.getItem("country")) || "";
 }
+
+export function setInterests(value) {
+  sessionStorage.setItem("interests", JSON.stringify(value));
+}
+
+export function getInterests() {
+  return JSON.parse(sessionStorage.getItem("interests")) || "";
+}

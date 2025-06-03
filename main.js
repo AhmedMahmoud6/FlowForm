@@ -186,6 +186,7 @@ nextBtn.addEventListener("click", (_) => {
         )
       )
         return;
+      // validate second page
     } else if (stepCounter === 3) {
       if (
         !validateThirdPage(
@@ -197,12 +198,18 @@ nextBtn.addEventListener("click", (_) => {
       )
         return;
     }
+    // increase page counter
     stepCounter += 1;
     setStepCounter(stepCounter);
+
+    // update progress bar ui
     updateProgressBar(progressBar, "right");
+    // render current Step ui
     renderCurrentStep(steps);
+    // render current Step content
     renderCurrentStepContent(stepsContent, prevBtn, nextBtn);
   }
+  // update summary form details
   updateSummaryForm();
 });
 

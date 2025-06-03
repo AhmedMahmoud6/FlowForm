@@ -30,10 +30,6 @@ import {
   setComment,
   setNews,
   setTerms,
-  getTerms,
-  getInterests,
-  getComment,
-  getNews,
 } from "./getAndSetFunctions.js";
 
 import {
@@ -59,7 +55,6 @@ import {
   isValidContactMethod,
   validateTerms,
   validateThirdPage,
-  updateInterests,
   updateThirdPage,
 } from "./functions.js";
 
